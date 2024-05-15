@@ -15,7 +15,7 @@ Student.prototype.addMarks = function(...marks) {
   }
 }
 Student.prototype.getAverage = function() {
-  if (this.marks.length === 0) {
+  if (!this.marks|| !this.marks.length) {
     return 0;
   }
   return this.marks.reduce((acc, item) => acc + item, 0) / this.marks.length;
@@ -27,6 +27,9 @@ Student.prototype.exclude = function(reason) {
   this.excluded = reason;
 }
 
+let student = new Student("Tony", "male", 37);
+student.exclude("плохая успеваемость");
+console.log(student.getAverage());
 let student1 = new Student("Василиса", "женский", 19);
 student1.setSubject("Algebra");
 console.log(student1.getAverage());
